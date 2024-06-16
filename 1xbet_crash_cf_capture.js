@@ -18,6 +18,8 @@ async function getWsEndpoint() {
 
     let page = await browser.newPage();
     await page.goto("https://1xbet.com/en/allgamesentrance/crash",{timeout: 0});
+    await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
+
 
     const client = await page.target().createCDPSession()
 
@@ -45,7 +47,7 @@ async function getWsEndpoint() {
       });
 
     while(true){
-        await page.keyboard.press("Tab");
+        // await page.keyboard.press("Tab");
         await wait(1000);
         // await page.keyboard.press("ArrowDown");
         await wait(1000);
