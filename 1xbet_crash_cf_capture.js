@@ -27,7 +27,6 @@ async function getWsEndpoint() {
 
     client.on('Network.webSocketFrameReceived', ({ requestId, timestamp, response }) => {
         let payloadString = response.payloadData.toString('utf8');
-        console.log(payloadString);
         try {
           if (payloadString.includes('"target":"OnCrash"')) {
             payloadString = payloadString.replace(/[^\x20-\x7E]/g, '');
